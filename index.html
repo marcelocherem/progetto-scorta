@@ -1,11 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordine Magazzino</title>
+    <title>progetto-scorta</title>
+    <link rel="stylesheet" href="assets/css/template.css">
+    <script type="text/javascript" src="assets/js/index.js"></script>
 </head>
+
 <body>
-    
+    <div class="container">
+        <h1>Progetto Scorta</h1>
+        <!-- <input type="text" placeholder="Cerca un prodotto..." style="width: 100%; padding: 10px; margin-bottom: 20px;"> -->
+
+        <!-- bibite -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('bibite')"> bibite </button>
+            <div class="dropdown-content" id="bibite">
+                <div class="product">
+                    <span>coca Lattina</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>coca Zero Lattina</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>tè Pesca</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>tè Limone</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>fanta</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>ginger beer</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>succo mango</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>polpa mango</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>acqua nat</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>acqua friz</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>succo Arancia</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>succo melograno</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>succo ananas</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>pompelmo soda</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>lemonsoda</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- birre -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('birre')"> birre </button>
+            <div class="dropdown-content" id="birre">
+                <div class="product"><span>corona Cero</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>Leffe</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>birra los amigos</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>la señorita</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>el musico</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>modelo special</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>los amantes</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>sam migel</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- caffè -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('caffè')"> caffè </button>
+            <div class="dropdown-content" id="caffè">
+                <div class="product"><span>caffè</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>caffè deca</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>caffè ginseng</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- distillati -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('distillati')"> distillati </button>
+            <div class="dropdown-content" id="distillati">
+                <div class="product"><span>ron prohibido</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>rom uruapan charanda</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>whisky pietro</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- drink -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('drink')"> drink </button>
+            <div class="dropdown-content" id="drink">
+                <div class="product"><span>Triplesec</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>Carpano</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>Campari</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>Rum</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>Tequila Espolon Promo</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fusto -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('fusto')"> fusto </button>
+            <div class="dropdown-content" id="fusto">
+                <div class="product"><span>Bombolla</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>fusto Bud</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>fusto coca</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mescal blanco -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('mescal blanco')"> mescal blanco
+            </button>
+            <div class="dropdown-content" id="mescal blanco">
+                <div class="product"><span>san cosme</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>ojo de tigre blanco</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>bruxo</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>alipus san juan</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>alipus baltazar</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mescal reposado -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('mescal reposado')"> mescal reposado
+            </button>
+            <div class="dropdown-content" id="mescal reposado">
+                <div class="product"><span>monte alban</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>ojo de tigre reposado</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sciroppi -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('sciroppi')"> sciroppi </button>
+            <div class="dropdown-content" id="sciroppi">
+                <div class="product"><span>Caramello Salato</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>lime</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>melograno</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>frutti di bosco</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>cocco</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>ananas</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>schiroppo di agave</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- tequila añejo -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('tequila añejo')"> tequila añejo
+            </button>
+            <div class="dropdown-content" id="tequila añejo">
+                <div class="product"><span>sierra antigo añejo</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>1800 añejo</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>rooster rojo añejo</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- tequila blanco -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('tequila blanco')"> tequila blanco
+            </button>
+            <div class="dropdown-content" id="tequila blanco">
+                <div class="product"><span>rooster rojo</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>don ramon plata</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>butterfly cannon cristalino</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- tequila reposado -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('tequila reposado')"> tequila reposado
+            </button>
+            <div class="dropdown-content" id="tequila reposado">
+                <div class="product"><span>el jimador reposado</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>altos reposado</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>casamigos reposado</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- vini -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('vini')"> vini </button>
+            <div class="dropdown-content" id="vini">
+                <div class="product"><span>axilu</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>endrizzi DOC</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>gewurztraminer</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>sangria</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>lugana</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>bepim</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>teroldego</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>tarapacà</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- amari -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('amari')"> amari </button>
+            <div class="dropdown-content" id="amari">
+                <div class="product"><span>limoncello</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>borghetti</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>alpino</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- altri -->
+        <div class="dropdown"><button class="category" onclick="toggleDropdown('altri')"> altri </button>
+            <div class="dropdown-content" id="altri">
+                <div class="product"><span>mirtilli</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>zucchero x caffè</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>cioccolatini</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>ghiaccio cubbo</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>ghiaccio trit</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>jalapenos</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>tagin</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>lime</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>sale rosa</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+                <div class="product"><span>wood smoke</span>
+                    <div class="custom-spinner">
+                        <button class="spinner-btn" onclick="decrementValue(this)">-</button>
+                        <input type="number" class="custom-number" value="0" min="0">
+                        <button class="spinner-btn" onclick="incrementValue(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- seconda parte -->
+        <div class="messagi">
+            <button class="buttonEnd" onclick="saveSelection()">prima prova</button>
+            <textarea id="output"></textarea>
+            <button class="sendToWhatsapp" onclick="sendToWhatsApp(this, '393455078311')">Send to Whatsapp</button>
+            
+
+            <button class="buttonEnd" onclick="generateMessages()">Genera messaggi</button>
+            <textarea id="planetMessage"></textarea>
+            <button class="sendToWhatsapp" onclick="sendToWhatsApp(this, '393455078311')">Send to Whatsapp</button>
+            
+            
+            <textarea id="enterpriseMessage"></textarea>
+            <button class="sendToWhatsapp" onclick="sendToWhatsApp(this, '393455078311')">Send to Whatsapp</button>
+
+            <textarea id="metroMessage"></textarea>
+            <button class="sendToWhatsapp" onclick="sendToWhatsApp(this, '393455078311')">Send to Whatsapp</button>
+        </div>
+        
+    </div>
+
 </body>
+
 </html>

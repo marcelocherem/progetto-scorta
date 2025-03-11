@@ -87,7 +87,7 @@ const productCategories = [
         category: "sciroppi",
         products: [
             { name: "Caramello Salato", unit: "bt", supplier: "Planet" },
-            { name: "Lime", unit: "ct", supplier: "Planet" },
+            { name: "Schiroppo di Lime", unit: "ct", supplier: "Planet" },
             { name: "ODK Melograno", unit: "bt", supplier: "Planet" },
             { name: "ODK Frutti di Bosco", unit: "bt", supplier: "Planet" },
             { name: "ODK Cocco", unit: "bt", supplier: "Planet" },

@@ -438,3 +438,14 @@ function decrementSearchValue(productName) {
     }
 }
 
+function sendToWhatsApp(button, whatsappNumber) {
+    const textarea = button.previousElementSibling;
+    const message = textarea.value.trim();
+    if (!message) {
+        alert('Il testo è vuoto! Per favore, scrivi qualcosa prima di inviare.');
+        return;
+    }
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+}

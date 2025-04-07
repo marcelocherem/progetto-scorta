@@ -283,7 +283,9 @@ textarea {
 .sendToWhatsapp .icon {
     height: 20px;
 }
-
+.messagi-container {
+    display: none;
+}
 /* last buttons funcionality */
 .fases {
     width: calc(100% + 40px);

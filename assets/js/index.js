@@ -154,298 +154,249 @@ const productCategories = [
             { name: "Sale Rosa", unit: "", supplier: "metro" },
             { name: "Wood Smoke", unit: "", supplier: "metro" }
         ]
+    },
+    {
+        category: "prova",
+        products: [
+            { name: "Prova metro", unit: "", supplier: "metro" },
+            { name: "Prova stefano", unit: "", supplier: "stefano" },
+            { name: "Prova planet", unit: "", supplier: "planet" }
+        ]
     }
 ];
 
+let selectedProducts = [];
 
-// Funzione di generazione di categorie
-function generateCategories() {
-    const container = document.getElementById('category-container');
-    
-    productCategories.forEach(category => {
-        // Crea button categorie
-        const dropdown = document.createElement('div');
-        dropdown.classList.add('dropdown');
-        
-        const categoryButton = document.createElement('button');
-        categoryButton.classList.add('category');
-        categoryButton.textContent = category.category;
-        categoryButton.setAttribute('onclick', `toggleDropdown('${category.category}')`);
-        
-        // Crea contenuto di categoria
-        const dropdownContent = document.createElement('div');
-        dropdownContent.classList.add('dropdown-content');
-        dropdownContent.setAttribute('id', category.category);
-        dropdownContent.style.display = "none"; // display inizia invisibile
-        
-        // Crea i prodotti dentri di categorie
-        category.products.forEach(product => {
-            const productElement = document.createElement('div');
-            productElement.classList.add('product');
-            
-            productElement.innerHTML = `
-                <span>${product.name}</span>
-                <div class="custom-spinner">
-                    <button class="spinner-btn" onclick="decrementValue(this)">-</button>
-                    <input type="number" class="custom-number" value="0" min="0">
-                    <button class="spinner-btn" onclick="incrementValue(this)">+</button>
-                </div>
-            `;
-            dropdownContent.appendChild(productElement);
-        });
-        
-        // Add button content
-        dropdown.appendChild(categoryButton);
-        dropdown.appendChild(dropdownContent);
-        container.appendChild(dropdown);
+// crea categorie
+function loadCategories() {
+    const categoryContainer = document.getElementById("category-container");
+    productCategories.forEach(cat => {
+        const button = document.createElement("button");
+        button.textContent = cat.category;
+        button.className = "category-button";
+        button.onclick = () => displayProducts(cat.products);
+        categoryContainer.appendChild(button);
     });
 }
-
-// Funzione fare funzionare dropdown
-function toggleDropdown(categoryId) {
-    const dropdownContent = document.getElementById(categoryId);
-    if (dropdownContent.style.display === "none" || dropdownContent.style.display === "") {
-        dropdownContent.style.display = "flex";
-    } else {
-        dropdownContent.style.display = "none";
-    }
-}
-
-// Funzione per quantità
-function updateSpinnerColor(input) {
-    const spinner = input.parentElement;
-    const value = parseInt(input.value, 10) || 0;
-
-    if (value > 0) {
-        spinner.classList.add('greater');
-    } else {
-        spinner.classList.remove('greater');
-    }
-}
-function incrementValue(button) {
-    const input = button.parentElement.querySelector('input[type="number"]');
-    input.value = parseInt(input.value) + 1;
-    updateSpinnerColor(input);
-}
-
-function decrementValue(button) {
-    const input = button.parentElement.querySelector('input[type="number"]');
-    if (parseInt(input.value) > 0) {
-        input.value = parseInt(input.value) - 1;
-        updateSpinnerColor(input);
-    }
-}
-
-//funzione messagi prova
-function saveSelection() {
-    const products = document.querySelectorAll('.product');
-    let result = "Ciao Ale, ecco la lista delle ordini: \n";
-    let hasSelectedProduct = false; // Flag
-
-    products.forEach(product => {
-        const name = product.querySelector('span').innerText; // Nome prodotto no HTML
-        const quantity = parseInt(product.querySelector('input').value, 10) || 0; // Quantità input
-        
-        // cerca il prodotto che corrisponde al array `productCategories`
-        let productData;
-        for (const category of productCategories) {
-            productData = category.products.find(p => p.name === name);
-            if (productData) break; // se trovato, si ferma
-        }
-
-        if (productData && quantity > 0) {
-            const unit = productData.unit || "";
-            result += `${name}, ${quantity} ${unit} \n`;
-            hasSelectedProduct = true;
-        }
-    });
-
-    if (!hasSelectedProduct) {
-        result = "Selezionare prodotti";
-    }
-
-    document.getElementById('output').value = result;
-}
-
-// Funzione messagi separati
-function generateMessages() {
-    const now = new Date();
-    const greeting = now.getHours() >= 12 ? "buonasera" : "buongiorno";
-
-    // messagi vuote prima di iniziare
-    let planetMessage = `Ciao Raffaele, ${greeting}, per cortesia, abbiamo bisogno di: \n`;
-    let stefanoMessage = `Ciao Stefano, ${greeting}, per cortesia, abbiamo bisogno di: \n`;
-    let metroMessage = `Ciao Ale, abbiamo bisogno di: \n`;
-
-    // Flags per cercare se ogni messagio ha dei prodotti
-    let hasPlanetProducts = false;
-    let hasStefanoProducts = false;
-    let hasMetroProducts = false;
-
-    productCategories.forEach(category => {
-        const dropdownContent = document.getElementById(category.category);
-        
-        if (!dropdownContent) {
-            console.warn(`Categoria ${category.category} não encontrada no HTML.`);
-            return;
-        }
-        
-        dropdownContent.querySelectorAll('.product').forEach(product => {
-            const name = product.querySelector('span').innerText; // Nome prodotto
-            const quantityInput = product.querySelector('input[type="number"]');
-            const quantity = parseInt(quantityInput.value, 10) || 0;
-            
-            // cerca prodotto nel array `productCategories`
-            const productData = category.products.find(p => p.name === name);
-            if (productData && quantity > 0) {
-                const { supplier, unit } = productData; // fornitore e unità
-
-                if (supplier === "Planet") {
-                    planetMessage += `${name}, ${quantity} ${unit} \n`;
-                    hasPlanetProducts = true;
-                } else if (supplier === "Stefano") {
-                    stefanoMessage += `${name}, ${quantity} ${unit} \n`;
-                    hasStefanoProducts = true;
-                } else if (supplier === "metro") {
-                    metroMessage += `${name}, ${quantity} ${unit} \n`;
-                    hasMetroProducts = true;
-                }
-            }
-        });
-    });
-
-    // aggiorna le casse di messagi se ci sono prodotti
-    document.getElementById('planetMessage').value = hasPlanetProducts ? planetMessage : "";
-    document.getElementById('enterpriseMessage').value = hasStefanoProducts ? stefanoMessage : "";
-    document.getElementById('metroMessage').value = hasMetroProducts ? metroMessage : "";
-}
-
+const allProducts = productCategories.reduce((acc, category) => acc.concat(category.products), []);
 
 document.addEventListener("DOMContentLoaded", () => {
-    generateCategories();
+    displayProducts(allProducts);
 });
 
-// Funzione searchbar
+// Eapparire i prodotti secondo la categoria
+function displayProducts(products) {
+    const productContainer = document.getElementById("product-container");
+    productContainer.innerHTML = ""; // Limpa o conteúdo antes de exibir
+
+    products.forEach(prod => {
+        const productDiv = document.createElement("div");
+        productDiv.className = "product";
+
+        const productName = document.createElement("span");
+        productName.textContent = prod.name;
+
+        const spinnerDiv = document.createElement("div");
+        spinnerDiv.className = "custom-spinner";
+
+        // Verificar se o produto já está selecionado e obter a quantidade
+        const existingProduct = selectedProducts.find(p => p.name === prod.name);
+        const initialQuantity = existingProduct ? existingProduct.quantity : 0;
+
+        // Campo de entrada para exibir/alterar quantidade
+        const quantityInput = document.createElement("input");
+        quantityInput.type = "number";
+        quantityInput.className = "custom-number";
+        quantityInput.value = initialQuantity; // Preservar a quantidade existente
+        quantityInput.min = 0;
+
+        // Ajustar cor com base na quantidade inicial
+        updateSpinnerColor(spinnerDiv, initialQuantity);
+
+        const decreaseButton = document.createElement("button");
+        decreaseButton.className = "spinner-btn";
+        decreaseButton.textContent = "-";
+        decreaseButton.onclick = () => {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 0) {
+                quantityInput.value = currentValue - 1;
+                updateQuantity(prod, currentValue - 1);
+                updateSpinnerColor(spinnerDiv, currentValue - 1);
+            }
+        };
+
+        const increaseButton = document.createElement("button");
+        increaseButton.className = "spinner-btn";
+        increaseButton.textContent = "+";
+        increaseButton.onclick = () => {
+            const currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+            updateQuantity(prod, currentValue + 1);
+            updateSpinnerColor(spinnerDiv, currentValue + 1);
+        };
+
+        quantityInput.oninput = (e) => {
+            const newQuantity = parseInt(e.target.value);
+            updateQuantity(prod, newQuantity);
+            updateSpinnerColor(spinnerDiv, newQuantity);
+        };
+
+        spinnerDiv.appendChild(decreaseButton);
+        spinnerDiv.appendChild(quantityInput);
+        spinnerDiv.appendChild(increaseButton);
+
+        productDiv.appendChild(productName);
+        productDiv.appendChild(spinnerDiv);
+        productContainer.appendChild(productDiv);
+    });
+}
+
+// Atualizar quantidade de um produto
+function updateQuantity(product, newQuantity) {
+    const existingProduct = selectedProducts.find(p => p.name === product.name);
+    if (existingProduct) {
+        existingProduct.quantity = newQuantity;
+        if (newQuantity <= 0) {
+            selectedProducts = selectedProducts.filter(p => p.name !== product.name);
+        }
+    } else if (newQuantity > 0) {
+        selectedProducts.push({ ...product, quantity: newQuantity });
+    }
+}
+
+
+function updateSpinnerColor(spinnerElement, quantity) {
+    if (quantity > 0) {
+        spinnerElement.style.backgroundColor = "#BD59D7"; // Cor desejada
+    } else {
+        spinnerElement.style.backgroundColor = ""; // Retorna à cor original (transparente)
+    }
+}
+
+// Filtrar produtos na barra de pesquisa
 function searchProduct() {
-    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
-    const searchResults = document.getElementById('search-results');
-    searchResults.innerHTML = ""; // pulire spazio
-
-    if (!searchTerm) return; // non fa niente se il campo è vuoto
-
-    productCategories.forEach(category => {
-        category.products.forEach(product => {
-            if (product.name.toLowerCase().includes(searchTerm)) {
-                const resultElement = document.createElement('div');
-                resultElement.classList.add('product-search');
-
-                // Identificare il prodottocorrispondente nella tabella principale
-                const mainProduct = Array.from(document.querySelectorAll('.product')).find(p => {
-                    return p.querySelector('span').innerText === product.name;
-                });
-
-                const mainInput = mainProduct
-                    ? mainProduct.querySelector('input[type="number"]')
-                    : { value: 0 };
-
-                // Crea il elemento del risultato
-                resultElement.innerHTML = `
-                    <span>${product.name}</span>
-                    <div class="custom-spinner">
-                        <button class="spinner-btn" onclick="decrementSearchValue('${product.name}')">-</button>
-                        <input 
-                            type="number" 
-                            class="custom-number" 
-                            value="${mainInput.value}" 
-                            min="0" 
-                            oninput="syncQuantity('${product.name}', this.value)">
-                        <button class="spinner-btn" onclick="incrementSearchValue('${product.name}')">+</button>
-                    </div>
-                `;
-                searchResults.appendChild(resultElement);
-            }
-        });
+    const searchQuery = document.getElementById("search-bar").value.toLowerCase();
+    const matchingProducts = [];
+    productCategories.forEach(cat => {
+        matchingProducts.push(
+            ...cat.products.filter(prod => prod.name.toLowerCase().includes(searchQuery))
+        );
     });
+    displayProducts(matchingProducts);
 }
 
-// Funzione per pulire la barra di ricerca
+// Limpar barra de pesquisa
 function clearSearch() {
-    document.getElementById('search-bar').value = ""; // svuota campo
-    document.getElementById('search-results').innerHTML = ""; // svuota i risultati
+    document.getElementById("search-bar").value = "";
+    displayProducts(allProducts);
 }
 
-// sincronizzare tabelle
-function syncQuantity(productName, value) {
-    // Identificare i prodotti nella principale
-    const mainProduct = Array.from(document.querySelectorAll('.product')).find(p => {
-        return p.querySelector('span').innerText === productName;
+// Gerar mensagem principal
+function generateMainMessage() {
+    let mainMessage = "Ciao Ale, abbiamo bisogno di:\n";
+
+    selectedProducts.forEach(prod => {
+        mainMessage += `${prod.name}, ${prod.quantity} ${prod.unit}\n`;
     });
 
-    if (mainProduct) {
-        const mainInput = mainProduct.querySelector('input[type="number"]');
-        mainInput.value = value; // Sincronizzare il valore della tabella principale
-    }
+    document.getElementById("main-message").value = mainMessage.trim();
 }
 
-// aggiornarre tabella principale
-function incrementSearchValue(productName) {
-    const mainProduct = Array.from(document.querySelectorAll('.product')).find(p => {
-        return p.querySelector('span').innerText === productName;
-    });
+// Gerar mensagens por fornecedor
+function generateSupplierMessages() {
+    const supplierMessages = {
+        metro: [],
+        stefano: [],
+        planet: []
+    };
 
-    if (mainProduct) {
-        const mainInput = mainProduct.querySelector('input[type="number"]');
-        mainInput.value = parseInt(mainInput.value) + 1; 
-
-        const searchInput = Array.from(document.querySelectorAll('#search-results .product-search')).find(p => {
-            return p.querySelector('span').innerText === productName;
-        }).querySelector('input[type="number"]');
-
-        if (searchInput) {
-            searchInput.value = mainInput.value; 
-            updateSpinnerColor(searchInput);
+    selectedProducts.forEach(prod => {
+        const supplier = prod.supplier.toLowerCase();
+        if (supplier === "metro") {
+            supplierMessages.metro.push(`${prod.name}, ${prod.quantity} ${prod.unit}`);
+        } else if (supplier === "stefano") {
+            supplierMessages.stefano.push(`${prod.name}, ${prod.quantity} ${prod.unit}`);
+        } else if (supplier === "planet") {
+            supplierMessages.planet.push(`${prod.name}, ${prod.quantity} ${prod.unit}`);
         }
-
-        updateSpinnerColor(mainInput);
-    }
-}
-
-
-function decrementSearchValue(productName) {
-    
-    const mainProduct = Array.from(document.querySelectorAll('.product')).find(p => {
-        return p.querySelector('span').innerText === productName;
     });
 
-    if (mainProduct) {
-        const mainInput = mainProduct.querySelector('input[type="number"]');
-        if (parseInt(mainInput.value) > 0) {
-            mainInput.value = parseInt(mainInput.value) - 1; 
+    const metroMessage = supplierMessages.metro.length > 0
+        ? `Ciao Raffaele, per cortesia, abbiamo bisogno di:\n${supplierMessages.metro.join("\n")}`
+        : "";
 
-           
-            const searchInput = Array.from(document.querySelectorAll('#search-results .product-search')).find(p => {
-                return p.querySelector('span').innerText === productName;
-            }).querySelector('input[type="number"]');
+    const stefanoMessage = supplierMessages.stefano.length > 0
+        ? `Ciao Stefano, per cortesia, abbiamo bisogno di:\n${supplierMessages.stefano.join("\n")}`
+        : "";
 
-            if (searchInput) {
-                searchInput.value = mainInput.value;
-                updateSpinnerColor(searchInput);
-            }
+    const planetMessage = supplierMessages.planet.length > 0
+        ? `Ciao Ale, abbiamo bisogno di:\n${supplierMessages.planet.join("\n")}`
+        : "";
 
-            
-            updateSpinnerColor(mainInput);
-        }
+    document.getElementById("metro-message").value = metroMessage;
+    document.getElementById("stefano-message").value = stefanoMessage;
+    document.getElementById("planet-message").value = planetMessage;
+}
+
+// Inicializar página
+document.addEventListener("DOMContentLoaded", () => {
+    loadCategories();
+});
+
+function loadCategories() {
+    const categoryContainer = document.getElementById("category-container");
+
+    // Limpa as categorias existentes
+    categoryContainer.innerHTML = "";
+
+    productCategories.forEach(cat => {
+        const button = document.createElement("button");
+        button.textContent = cat.category.toUpperCase();
+        button.className = "category-button";
+
+        // Clique na categoria
+        button.onclick = () => {
+            // Remove a classe 'selected' de todas as categorias
+            const allButtons = document.querySelectorAll(".category-button");
+            allButtons.forEach(btn => btn.classList.remove("selected"));
+
+            // Adiciona a classe 'selected' ao botão clicado
+            button.classList.add("selected");
+
+            // Exibe os produtos da categoria
+            displayProducts(cat.products);
+        };
+
+        categoryContainer.appendChild(button);
+    });
+}
+
+
+function sendToWhatsApp(messageId, phoneNumber) {
+    const messageText = document.getElementById(messageId).value; // Capturar o conteúdo da mensagem
+    if (messageText.trim() !== "") {
+        const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(messageText)}`;
+        window.open(whatsappLink, "_blank"); // Abre o WhatsApp em uma nova aba
+    } else {
+        alert("A mensagem está vazia. Por favor, escreva algo antes de enviar."); // Aviso caso a mensagem esteja vazia
     }
 }
 
-function sendToWhatsApp(button, whatsappNumber) {
-    const textarea = button.previousElementSibling;
-    const message = textarea.value.trim();
-    if (!message) {
-        alert('Il testo è vuoto! Per favore, scrivi qualcosa prima di inviare.');
-        return;
-    }
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-    window.open(whatsappURL, '_blank');
-}
+// funzionalitá tasti finali
+// Captura os botões e os contêineres
+const prodottiButton = document.querySelector(".prodotti");
+const ordiniButton = document.querySelector(".ordini");
+const prodottiContainer = document.querySelector(".prodotti-container");
+const messagiContainer = document.querySelector(".messagi-container");
+
+// Quando clicar no botão "Prodotti"
+prodottiButton.addEventListener("click", () => {
+    prodottiContainer.style.display = "block"; // Mostra o prodotti-container
+    messagiContainer.style.display = "none"; // Esconde o messagi-container
+});
+
+// Quando clicar no botão "Ordini"
+ordiniButton.addEventListener("click", () => {
+    prodottiContainer.style.display = "none"; // Esconde o prodotti-container
+    messagiContainer.style.display = "block"; // Mostra o messagi-container
+});

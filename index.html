@@ -6,36 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>progetto-scorta</title>
     <link rel="stylesheet" href="assets/css/template.css">
-    <script type="text/javascript" src="assets/js/index.js"></script>
 </head>
 
 <body>
-    <div class="container" >
-        <h1>Progetto Scorta</h1>
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Cerca un prodotto..." oninput="searchProduct()">
-            <button class="btnCancelSearch" onclick="clearSearch()" style="padding: 10px;">X</button>
-        </div>
-        <div id="search-results" class="search-results"></div>
+    <div class="container">
+        <h1 class="title">Progetto Scorta</h1>
+        <div class="prodotti-container">
+            <!-- Bsearchbar -->
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Cerca un prodotto..." oninput="searchProduct()">
+                <button class="btnCancelSearch" onclick="clearSearch()" style="padding: 10px;">X</button>
+            </div>
 
-        <div class="containerInt" id="category-container"></div>
+            <!-- Categorie -->
+            <div id="category-container" class="categories"></div>
 
-        <!-- seconda parte -->
-        <div class="messagi">
-            <button class="buttonEnd" onclick="saveSelection()">Prima Prova</button>
-            <textarea id="output"></textarea>
-            <button class="sendToWhatsapp" onclick="sendToWhatsApp(this, '393473595718')">Send to Whatsapp</button>
-            <button class="buttonEnd" onclick="generateMessages()">Genera Messaggi</button>
-            <textarea id="planetMessage"></textarea>
-            <button class="sendToWhatsapp" onclick="sendToWhatsApp(this, '393473595718')">Send to Whatsapp</button>
-            <textarea id="enterpriseMessage"></textarea>
-            <button class="sendToWhatsapp" onclick="sendToWhatsApp(this, '393473595718')">Send to Whatsapp</button>
-            <textarea id="metroMessage"></textarea>
-            <button class="sendToWhatsapp" onclick="sendToWhatsApp(this, '393473595718')">Send to Whatsapp</button>
+            <!-- Prodotti -->
+            <div id="product-container" class="product-list"></div>
         </div>
-        
+        <!-- messagi e pulsanti -->
+        <div class="messagi-container">
+            <div class="messagi">
+                <button class="buttonEnd" onclick="generateMainMessage()">Criar Primeira Mensagem</button>
+                <textarea id="main-message" placeholder="prima lista da approvare..."></textarea>
+                <button class="sendToWhatsapp" onclick="sendToWhatsApp('main-message', '393473595718')"><img src="assets/img/whatsapp.png" alt="" class="icon">
+                    Send to Whatsapp</button>
+
+                <button class="buttonEnd" onclick="generateSupplierMessages()">Gerar Mensagens por Fornecedor</button>
+                <textarea id="metro-message" placeholder="messaggio per planet..."></textarea>
+                <button class="sendToWhatsapp" onclick="sendToWhatsApp('metro-message', '393473595718')"><img src="assets/img/whatsapp.png" alt="" class="icon">
+                    Send to Whatsapp</button>
+
+                <textarea id="stefano-message" placeholder="messaggio per Enterprise..."></textarea>
+                <button class="sendToWhatsapp" onclick="sendToWhatsApp('stefano-message', '393473595718')"><img
+                        src="assets/img/whatsapp.png" alt="" class="icon">
+                    Send to Whatsapp</button>
+
+                <textarea id="planet-message" placeholder="messaggio per Ale..."></textarea>
+                <button class="sendToWhatsapp" onclick="sendToWhatsApp('planet-message', '393473595718')">
+                    <img src="assets/img/whatsapp.png" alt="" class="icon">
+                    Send to Whatsapp</button>
+            </div>
+        </div>
+        <div class="fases">
+            <button class="prodotti">
+                <img src="assets/img/clipboard.png" alt="" class="icon">
+                prodotti
+            </button>
+            <div class="line"></div>
+            <button class="ordini">
+                <img src="assets/img/checkout.png" alt="" class="icon">
+
+                ordinare
+            </button>
+        </div>
     </div>
-
+    <script type="text/javascript" src="assets/js/index.js"></script>
 </body>
 
 </html>

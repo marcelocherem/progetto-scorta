@@ -333,6 +333,7 @@ textarea {
     h1 {
         margin: 40px 0;
     }
+    .fases {position: fixed;}
 }
 
 @media screen and (max-width: 370px) {
